@@ -10,40 +10,31 @@ using DSharpPlus.Net;
 using DSharpPlus.VoiceNext;
 using Microsoft.Extensions.Logging;
 using MySql.Data.MySqlClient;
+using N3rdyBacon;
 using N3rdyBacon.Commands;
+using Org.BouncyCastle.Utilities;
 using System.Net;
 
 ///github.com/n3rdydzn
 ///Started: 12:10 PM | 06/08/2022
 ///Status: Not Finished...
 
-
 ///Banco de Dados Flexível
-string db_dados = "server=" + N3rdyBacon.Config.db_server + ";database=" + N3rdyBacon.Config.db_data + ";Uid=" + N3rdyBacon.Config.db_user + ";pwd=" + N3rdyBacon.Config.db_pass;
-MySqlConnection con_db = new MySqlConnection(db_dados);
-
-
-string bot_appid = N3rdyBacon.Config.bot_appid;
-string bot_token = N3rdyBacon.Config.bot_token;
-bool bot_on = false;
-
 WebClient web = new WebClient();
-string bot_title = web.DownloadString("https://pastebin.com/raw/5s8KFjCV");
+config.bot_title = web.DownloadString(config.bot_title_link);
 
-
-
+Console.Clear();
 main();
-
-
 void main()
 {
     Console.Title = "[ST] | N3rdyBot";
     verify();
-    start(bot_on, bot_token, bot_title).GetAwaiter().GetResult();
+    start(config.bot_on, config.bot_token, config.bot_title).GetAwaiter().GetResult();
 
 }
 static async Task start(bool bot_on, string bot_token, string bot_title)
 {
+
     Console.Write("\nDiscord | ");
     Console.ForegroundColor = ConsoleColor.DarkYellow;
     Console.Write("Conectando...");
@@ -52,16 +43,15 @@ static async Task start(bool bot_on, string bot_token, string bot_title)
     {
         Token = bot_token,
         TokenType = TokenType.Bot,
-        MinimumLogLevel = LogLevel.Debug,
+        MinimumLogLevel = LogLevel.None,
         LogTimestampFormat = "hh:mm:ss tt",
-        Intents = DiscordIntents.AllUnprivileged
+        Intents = DiscordIntents.All
     });
     discord.UseInteractivity(new InteractivityConfiguration()
     {
         PollBehaviour = PollBehaviour.KeepEmojis,
         Timeout = TimeSpan.FromSeconds(30)
     });
-
 
     var commands = discord.UseCommandsNext(new CommandsNextConfiguration()
     {
@@ -70,11 +60,14 @@ static async Task start(bool bot_on, string bot_token, string bot_title)
     bot_on = true;
     
     Console.Clear();
-    
+
     while (bot_on == true)
     {
         Console.WriteLine("\n" + bot_title);
-        commands.RegisterCommands<Funcoes>();
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine("                  >                   Bot está online!                   <      ");
+        Console.ResetColor();
+        commands.RegisterCommands<funcoes>();
         
         await discord.ConnectAsync();
         await Task.Delay(-1);
@@ -84,10 +77,9 @@ static async Task start(bool bot_on, string bot_token, string bot_title)
 
     
 }
-
-
 void verify()
 {
+
     Console.Title = "[BT] | N3rdyBot";
     Console.Write("Banco de Dados | ");
     Console.ForegroundColor = ConsoleColor.DarkYellow;
@@ -95,7 +87,7 @@ void verify()
     Console.ResetColor();
     
     
-    banco.iniciar_conexao();
+    mysql.iniciar_conexao();
 
 
     Console.Title = "[BS] | N3rdyBot";
@@ -104,7 +96,6 @@ void verify()
     Console.Write("Conectado com Sucesso!");
     Console.ResetColor();
     
+
 }
-
-
 Console.ReadKey();

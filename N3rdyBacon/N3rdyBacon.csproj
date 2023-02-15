@@ -10,28 +10,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus" Version="4.2.0" />
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.2.0" />
-    <PackageReference Include="DSharpPlus.Interactivity" Version="4.2.0" />
-    <PackageReference Include="DSharpPlus.Rest" Version="4.2.0" />
-    <PackageReference Include="DSharpPlus.VoiceNext" Version="4.2.0" />
+    <PackageReference Include="DSharpPlus" Version="4.3.0" />
+    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.3.0" />
+    <PackageReference Include="DSharpPlus.Interactivity" Version="4.3.0" />
+    <PackageReference Include="DSharpPlus.Rest" Version="4.3.0" />
+    <PackageReference Include="DSharpPlus.VoiceNext" Version="4.3.0" />
     <PackageReference Include="log4net" Version="2.0.15" />
-    <PackageReference Include="MySql.Data" Version="8.0.30" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Config.Designer.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Config.resx</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Config.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Config.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <PackageReference Include="MySql.Data" Version="8.0.31" />
   </ItemGroup>
 
 </Project>
