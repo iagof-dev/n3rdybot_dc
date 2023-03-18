@@ -20,20 +20,20 @@ namespace N3rdyBacon
         public static bool bot_status_loop = false;
         public static string bot_title_link = "https://pastebin.com/raw/5s8KFjCV";
         public static string bot_pfp = "";
-        public static string bot_webhook = "https://discord.com/api/webhooks/1058161536864100412/VVNSwhDIneegytRw59fcUBIex7ayqTXTaEN06NAt1mlzaJUqHjnBoAmOl3eORSZ20oBD";
+        public static string bot_webhook = "";
 
 
         public static ulong dev_id = 833438251553128448;
         
         //BOT INFO
-        public static ulong bot_id = 956660539113738250;
-        public static string bot_token = "OTU2NjYwNTM5MTEzNzM4MjUw.G-U9rJ.FH0qh2nWjcSh5XvVQDEBxMEW2Rn8wY2HKDu6aE";
+        public static ulong bot_id = 0;
+        public static string bot_token = "";
 
         //Dados de conexão
-        public static string db_server = "db2.n3rdydzn.software";
+        public static string db_server = "";
         public static string db_data = "nrdydesi_n3rdybot";
-        public static string db_user = "n3rdy";
-        public static string db_pass = "132490kj";
+        public static string db_user = "";
+        public static string db_pass = "";
         public static int db_timeout = 100;
         
         //Tabelas
